@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  app:
+    image: brickdev-test
+    build:
+      context: .
+      dockerfile: Dockerfile
+    deploy:
+      replicas: 3
+    ports:
+      - "8000:8000"
+    environment:
+      - UUID={{.Task.Slot}}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/hostname"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
