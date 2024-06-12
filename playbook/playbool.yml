@@ -33,5 +33,3 @@
       service:
         name: ssh
         state: restarted
-
-#ansible-playbook -i hosts.ini site.yml команда для запуска
